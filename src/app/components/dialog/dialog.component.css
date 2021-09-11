@@ -1,0 +1,41 @@
+form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+
+	box-sizing: border-box;
+}
+
+.mat-form-field {
+	width: 100%;
+
+	border-radius: 0;
+}
+
+.form-btns {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+button {
+	border-radius: 0;
+	flex: 1;
+}
+
+button:first-child {
+	margin-right: 15px;
+
+	border: 1px solid hsl(0 0% 65%);
+	background: hsl(0 0% 65%);
+	color: #fff;
+}
+
+h2 {
+	margin: 0;
+	padding: 10px 0;
+
+	border-bottom: 1px solid hsl(0 0% 85%);
+	text-align: center;
+}

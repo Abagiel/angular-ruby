@@ -1,0 +1,20 @@
+.card {
+	max-width: 400px;
+	padding-left: 0;
+	padding-right: 0;
+	width: 300px;
+
+	border-radius: 0;
+}
+
+.mat-card-header {
+	border-bottom: 1px solid hsl(0 0% 80%);
+}
+
+.mat-card-content {
+	padding: 0 20px;
+}
+
+.mat-checkbox {
+	margin-right: 15px;
+}

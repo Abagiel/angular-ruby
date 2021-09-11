@@ -1,0 +1,17 @@
+.span-text {
+	display: block;
+	width: 100%;
+
+	text-align: center;
+}
+
+.icon {
+	font-size: 30px !important;
+	cursor: pointer;
+}
+
+.dialog .mat-dialog-container {
+	padding: 0;
+
+	border-radius: 0;
+}

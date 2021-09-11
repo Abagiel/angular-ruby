@@ -1,0 +1,6 @@
+.container {
+	min-height: 100vh;
+	padding: 40px;
+
+	background: hsl(0 0% 95%);
+}
