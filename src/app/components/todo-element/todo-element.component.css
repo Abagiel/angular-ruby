@@ -3,5 +3,17 @@
 }
 
 .mat-list-item {
+	display: flex;
 	font-size: 0;
+	min-height: 48px;
+	height: auto;
+
+	cursor: pointer;
+}
+.mat-list-item:not(:first-of-type) {
+	margin-top: 10px;
+}
+
+.item-text {
+	font-size: 16px;
 }

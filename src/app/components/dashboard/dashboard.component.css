@@ -1,6 +1,12 @@
 .container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-rows: max-content;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
 	min-height: 100vh;
 	padding: 40px;
+
 
 	background: hsl(0 0% 95%);
 }
