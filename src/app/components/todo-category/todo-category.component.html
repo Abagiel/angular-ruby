@@ -1,12 +1,17 @@
 <mat-card class='card md-elevation-z2'>
 	<mat-card-header>
 		<mat-card-title>
-			Family
+			{{ project.title }}
 		</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
 		<mat-list>
-			<app-todo-element></app-todo-element>
+			<app-todo-element
+				*ngFor="let todo of project.todos; let idx = index"
+				[todo]="todo"
+				[projectId]="project.id"
+				[todoOrderId]="idx"
+			></app-todo-element>
 		</mat-list>
 	</mat-card-content>
 </mat-card>

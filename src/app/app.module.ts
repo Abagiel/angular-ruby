@@ -11,20 +11,19 @@ import { TodoCategoryComponent } from './components/todo-category/todo-category.
 import { TodoElementComponent } from './components/todo-element/todo-element.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DialogComponent } from './components/dialog/dialog.component';
-import { ThroughDirective } from './directives/through.directive';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';  
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatCardModule} from '@angular/material/card'; 
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
-import {MatGridListModule} from '@angular/material/grid-list'; 
-import {MatListModule} from '@angular/material/list'; 
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';  
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatCardModule } from '@angular/material/card'; 
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatGridListModule } from '@angular/material/grid-list'; 
+import { MatListModule } from '@angular/material/list'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import {MatSelectModule} from '@angular/material/select';
     TodoElementComponent,
     HeaderComponent,
     DialogComponent,
-    ThroughDirective,
     DashboardComponent
   ],
   imports: [

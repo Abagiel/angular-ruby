@@ -1,5 +1,6 @@
 <div class="container">
-	<app-todo-category></app-todo-category>
-	<app-todo-category></app-todo-category>
-	<app-todo-category></app-todo-category>
+	<app-todo-category
+		*ngFor="let project of projects"
+		[project]="project"
+	></app-todo-category>
 </div>

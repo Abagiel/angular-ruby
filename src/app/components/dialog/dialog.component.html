@@ -11,8 +11,8 @@
 
 	<mat-form-field appearance="fill">
 		<mat-select formControlName="taskCategory" (selectionChange)="onChange($event)">
-			<mat-option value="1">
-				Один
+			<mat-option *ngFor="let project of projects" [value]="project.id">
+				{{ project.title }}
 			</mat-option>
 			<mat-option value="new">Новая категория</mat-option>
 		</mat-select>

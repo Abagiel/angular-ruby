@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ProjectsService, Todo, Project } from '../../services/projects.service';
 
 @Component({
@@ -14,8 +14,7 @@ export class DialogComponent implements OnInit {
 
   constructor(
   	private service: ProjectsService,
-  	public dialogRef: MatDialogRef<DialogComponent>,
-  	@Inject(MAT_DIALOG_DATA) public data: any) {
+  	public dialogRef: MatDialogRef<DialogComponent>) {
   	this.taskForm = new FormGroup({
   		"taskTitle": new FormControl(''),
   		"taskCategory": new FormControl(''),
@@ -30,6 +29,10 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get projects() {
+    return this.service.projects;
+  }
+
   submit(): void {
   	this.dialogClose();
 
@@ -42,15 +45,16 @@ export class DialogComponent implements OnInit {
 
   	if (this.isNewCategory) {
   		const project: Project = {
-  			id: Date.now(),
+  			id: this.service.projects.length + 1,
   			title: data.newCategory,
   			todos: []
   		}
+
   		project.todos.push(todo);
 
-  		this.service.addProject(project);
+  		this.service.addProject(project, todo);
   	} else {
-  		this.service.addTodo(todo);
+  		this.service.addTodo(todo, data.taskCategory);
   	}
 
   	this.isNewCategory = false;

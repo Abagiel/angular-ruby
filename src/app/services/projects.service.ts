@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 export interface Todo {
 	id: number,
@@ -17,23 +17,32 @@ export interface Project {
   providedIn: 'root'
 })
 export class ProjectsService {
-	projects: Project[] = [];
-  httpOptions = {
-    headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-  }
+	projects: any = [];
 
   constructor(private http: HttpClient) { }
 
   getProjects() {
-    return this.http.get('https://ruby-task.herokuapp.com/projects', { headers: this.httpOptions.headers });
+    return this.http.get('https://ruby-task.herokuapp.com/projects');
   }
 
-  addProject(project: Project) {
+  addProject(project: Project, todo: Todo) {
+    const body = { title: project.title, text: todo.text };
   	this.projects.push(project);
-  	console.log('project');
+    this.http.post('https://ruby-task.herokuapp.com/todos', body).subscribe(console.log);    
   }
 
-  addTodo(todo: Todo) {
-  	console.log('todo');
+  addTodo(todo: Todo, projectId: number) {
+    const body = { id: projectId, text: todo.text };
+    this.projects[projectId - 1].todos.push(todo);
+
+  	this.http.post('https://ruby-task.herokuapp.com/todos', body).subscribe(console.log);
+  }
+
+  patchTodo(projectId: number, todoId: number, todoOrderId: number): void {
+    const isComp = this.projects[projectId - 1].todos[todoOrderId].isCompleted;
+    this.projects[projectId - 1].todos[todoOrderId].isCompleted = !isComp;
+    const url = `https://ruby-task.herokuapp.com/projects/${projectId}/todo/${todoId}`;
+
+    this.http.patch(url, null).subscribe(console.log);
   }
 }

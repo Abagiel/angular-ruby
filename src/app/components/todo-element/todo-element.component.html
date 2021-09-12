@@ -1,4 +1,4 @@
 <mat-list-item>
-	<mat-checkbox color="primary"></mat-checkbox>
-	<span class="item-text">Pororororor</span>
+	<mat-checkbox [checked]="checked" color="primary" (click)="patchTodo()"></mat-checkbox>
+	<span [style]="{'text-decoration': todo.isCompleted ? 'line-through' : 'none'}" class="item-text">{{ todo.text }}</span>
 </mat-list-item> 

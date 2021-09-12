@@ -9,12 +9,15 @@ import { ProjectsService } from '../../services/projects.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private data: ProjectsService) { }
-  projects: any;
 
   ngOnInit(): void {
-  	this.data.getProjects().subscribe(data => {
-  		console.log(data);
+  	this.data.getProjects().subscribe(response => {
+  		this.data.projects = response;
   	});
+  }
+
+  get projects() {
+    return this.data.projects;
   }
 
 }

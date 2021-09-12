@@ -15,8 +15,7 @@ export class HeaderComponent implements OnInit {
   openDialog(): void {
   	const dialogRef = this.dialog.open(DialogComponent, {
   		width: '400px',
-      panelClass: 'dialog',
-  		data: {name: 'testname'}
+      panelClass: 'dialog'
   	});
 
   	dialogRef.afterClosed().subscribe(result => {
