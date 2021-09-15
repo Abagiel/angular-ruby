@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  environmentName: "Production",
+  apiUrl: "https://ruby-task.herokuapp.com"
 };

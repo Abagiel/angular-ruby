@@ -1,16 +1,15 @@
 <mat-card class='card md-elevation-z2'>
 	<mat-card-header>
 		<mat-card-title>
-			{{ project.title }}
+			{{ project?.title }}
 		</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
 		<mat-list>
 			<app-todo-element
-				*ngFor="let todo of project.todos; let idx = index"
+				*ngFor="let todo of project?.todos"
 				[todo]="todo"
-				[projectId]="project.id"
-				[todoOrderId]="idx"
+				[projectId]="project?.id"
 			></app-todo-element>
 		</mat-list>
 	</mat-card-content>

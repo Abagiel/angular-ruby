@@ -7,7 +7,7 @@ import { Project } from '../../services/projects.service';
   styleUrls: ['./todo-category.component.css']
 })
 export class TodoCategoryComponent implements OnInit {
-	@Input() project: Project = {id: -1, title: '', todos: []}
+	@Input() project: Partial<Project> = {};
 
   constructor() { }
 

@@ -13,13 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
-  	const dialogRef = this.dialog.open(DialogComponent, {
+  	this.dialog.open(DialogComponent, {
   		width: '400px',
       panelClass: 'dialog'
-  	});
-
-  	dialogRef.afterClosed().subscribe(result => {
-
   	});
   }
 

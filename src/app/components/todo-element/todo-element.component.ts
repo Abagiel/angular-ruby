@@ -7,20 +7,19 @@ import { ProjectsService, Todo } from '../../services/projects.service';
   styleUrls: ['./todo-element.component.css']
 })
 export class TodoElementComponent implements OnInit {
-	@Input() todo: Todo = {id: -1, text: '', isCompleted: false};
-	@Input() projectId: number = 0;
-	@Input() todoOrderId: number = 0;
+	@Input() todo: Partial<Todo> = {};
+	@Input() projectId: number | undefined;
 
 	checked: boolean = false;
 
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
-  	this.checked = this.todo.isCompleted;
+  	this.checked = this.todo?.isCompleted as boolean;
   }
 
-  patchTodo() {
-  	this.service.patchTodo(this.projectId, this.todo.id, this.todoOrderId);
+  patchTodo(): void {
+  	this.service.patchTodo(this.projectId, this.todo.id);
   }
 
 }

@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 import { ProjectsService, Todo, Project } from '../../services/projects.service';
+
+interface FormData {
+  taskTitle: string;
+  taskCategory: number;
+  newCategory?: string
+}
 
 @Component({
   selector: 'app-dialog',
@@ -16,9 +23,8 @@ export class DialogComponent implements OnInit {
   	private service: ProjectsService,
   	public dialogRef: MatDialogRef<DialogComponent>) {
   	this.taskForm = new FormGroup({
-  		"taskTitle": new FormControl(''),
-  		"taskCategory": new FormControl(''),
-  		"newCategory": new FormControl('')
+  		"taskTitle": new FormControl('', Validators.required),
+  		"taskCategory": new FormControl('', Validators.required)
   	});
   }
 
@@ -26,32 +32,26 @@ export class DialogComponent implements OnInit {
   	this.dialogRef.close();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  get projects() {
+  get projects(): Project[] {
     return this.service.projects;
   }
 
   submit(): void {
   	this.dialogClose();
 
-  	const data = this.taskForm.value;
-  	const todo: Todo = {
-  		id: Date.now(),
+  	const data: FormData = this.taskForm.value;
+  	const todo: Partial<Todo> = {
   		text: data.taskTitle,
   		isCompleted: false
   	}
 
   	if (this.isNewCategory) {
-  		const project: Project = {
-  			id: this.service.projects.length + 1,
+  		const project: Partial<Project> = {
   			title: data.newCategory,
   			todos: []
   		}
-
-  		project.todos.push(todo);
-
   		this.service.addProject(project, todo);
   	} else {
   		this.service.addTodo(todo, data.taskCategory);
@@ -60,10 +60,12 @@ export class DialogComponent implements OnInit {
   	this.isNewCategory = false;
   }
 
-  onChange(e: any): void {
+  onChange(e: MatSelectChange): void {
   	if (e.value === 'new') {
+      this.taskForm.addControl('newCategory', new FormControl('', Validators.required));
   		this.isNewCategory = true;
   	} else {
+      this.taskForm.removeControl('newCategory');
   		this.isNewCategory = false;
   	}
   }

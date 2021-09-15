@@ -9,7 +9,7 @@
 		<input formControlName="newCategory" matInput placeholder="Новая категория...">
 	</mat-form-field>
 
-	<mat-form-field appearance="fill">
+	<mat-form-field appearance="outline">
 		<mat-select formControlName="taskCategory" (selectionChange)="onChange($event)">
 			<mat-option *ngFor="let project of projects" [value]="project.id">
 				{{ project.title }}
@@ -20,6 +20,6 @@
 
 	<div class="form-btns">
 		<button mat-flat-button mat-dialog-close>Отмена</button>
-		<button mat-flat-button color="primary" (ngSubmit)="submit()">Ок</button>
+		<button [disabled]="taskForm.status === 'INVALID'" mat-flat-button color="primary" (ngSubmit)="submit()">Ок</button>
 	</div>
 </form>
