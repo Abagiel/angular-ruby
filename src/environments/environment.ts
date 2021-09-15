@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   environmentName: "Development",
-  apiUrl: "http://localhost:3000"
+  apiUrl: "https://ruby-task.herokuapp.com"
 };
 
 /*
